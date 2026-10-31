@@ -1,0 +1,20 @@
+/* three.js et ses modules complémentaires utilisés par le Studio (chargés à la demande). */
+export * from 'three';
+export { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+export { TransformControls } from 'three/addons/controls/TransformControls.js';
+export { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+export { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+export { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+export { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
+export { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+export { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+export { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+export { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+export { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+export { FilmPass } from 'three/addons/postprocessing/FilmPass.js';
+export { VignetteShader } from 'three/addons/shaders/VignetteShader.js';
+export { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
+export { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
+export { mergeGeometries, mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js';
+export { ViewHelper } from 'three/addons/helpers/ViewHelper.js';
+export { Reflector } from 'three/addons/objects/Reflector.js';

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; script-src 'self'; media-src 'self' blob: data: https:; connect-src 'self' blob: data: https://*.supabase.co wss://*.supabase.co; frame-src https: http: data: blob: about:; worker-src 'self' blob:">
+  <title>NEXORA — design, responsive, 3D et supervision</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NEXORA : Responsive Lab, design 2D avec objets 3D, studio de maquettes, audit de sécurité et supervision de sites, pour toi et ton équipe.">
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-mode="preview">
+  <div class="nx-landing" id="nxLanding" hidden></div>
+  <div class="app" id="app" hidden>
+    <!-- Rail de navigation : logo, espaces, actions globales -->
+    <nav class="rail drag" id="rail" aria-label="Espaces de NEXORA">
+      <div class="rail-logo"><img src="logo.png" alt="NEXORA" width="38" height="38"></div>
+      <div class="rail-spaces no-drag" id="modeSeg" role="tablist" aria-label="Espaces"></div>
+      <div class="rail-foot no-drag">
+        <button class="rail-btn" id="btnNew" title="Nouveau (Ctrl+N) : planche, session, projet, application ou scène" aria-label="Nouveau"></button>
+        <button class="rail-btn rail-ai" id="btnAI" title="Assistant IA (Ctrl+Maj+A) : connecte ta clé API" aria-label="Assistant IA"></button>
+        <button class="rail-btn" id="btnAppearance" title="Apparence et réglages" aria-label="Apparence" aria-haspopup="true"></button>
+      </div>
+    </nav>
+
+    <!-- Barre latérale : source et liste des appareils -->
+    <aside class="sidebar" id="sidebar">
+      <div class="side-top">
+        <div class="side-title"><b>Appareils</b><small>Responsive Lab</small></div>
+      </div>
+      <section class="side-source" id="sourcePanel"></section>
+      <div class="side-search">
+        <span class="search-ico" aria-hidden="true"></span>
+        <input id="deviceSearch" type="search" placeholder="Rechercher un appareil" spellcheck="false" aria-label="Rechercher un appareil">
+        <button class="icon-btn small side-skins" id="skinsBtn" title="Cadres officiels des fabricants" aria-label="Cadres officiels"></button>
+      </div>
+      <nav class="device-list" id="deviceList" aria-label="Appareils"></nav>
+    </aside>
+
+    <!-- Zone principale -->
+    <main class="main" id="main">
+      <header class="toolbar drag" id="toolbar">
+        <div class="tb-group no-drag">
+          <button class="tb-btn" id="btnSidebar" title="Afficher ou masquer le panneau de gauche (Ctrl+B ou Ctrl+Alt+←)" aria-label="Panneau de gauche"></button>
+        </div>
+        <span class="tb-space-ic" id="tbIcon" aria-hidden="true"></span>
+        <div class="tb-title" id="tbTitle"><b></b><small></small></div>
+        <button class="tb-btn tb-go no-drag" id="btnGo" title="Aller à une section, une fenêtre ou un projet (Ctrl+K)" aria-label="Aller à"></button>
+        <div class="tb-group glass-pill no-drag nav-pill">
+          <button class="tb-btn" id="btnBack" title="Page précédente" aria-label="Page précédente"></button>
+          <button class="tb-btn" id="btnForward" title="Page suivante" aria-label="Page suivante"></button>
+          <button class="tb-btn" id="btnReload" title="Recharger la page (Ctrl+R)" aria-label="Recharger"></button>
+        </div>
+        <form class="address no-drag" id="addressForm" autocomplete="off">
+          <span class="addr-ico" id="addrIcon" aria-hidden="true"></span>
+          <input id="addressInput" spellcheck="false" placeholder="Colle le lien d'un site, ou une page du projet" aria-label="Adresse">
+          <span class="addr-device" id="addrDevice" hidden></span>
+          <span class="addr-progress" id="addrProgress"></span>
+        </form>
+        <span class="tb-flex"></span>
+        <div class="tb-group no-drag">
+          <button class="tb-btn tb-refresh" id="btnRefresh" title="Rafraîchir l’espace (F5)" aria-label="Rafraîchir l’espace"></button>
+          <button class="tb-btn" id="btnInspector" title="Afficher ou masquer l'inspecteur (Ctrl+I)" aria-label="Inspecteur"></button>
+          <button class="tb-btn" id="btnPanelRight" title="Afficher ou masquer le panneau de droite (Ctrl+Alt+→)" aria-label="Panneau de droite"></button>
+        </div>
+        <div class="tb-spacer-controls"></div>
+      </header>
+
+      <div class="content">
+        <section class="stage" id="stage">
+          <div class="welcome" id="welcome" hidden></div>
+          <div class="stage-scroll" id="stageScroll"><div class="board" id="board"></div></div>
+          <div class="dock glass" id="dock"></div>
+          <div class="rec-pill" id="recPill" hidden></div>
+        </section>
+        <section class="space-pane home-pane" id="home" hidden></section>
+        <section class="space-pane" id="browserlab" hidden></section>
+        <section class="space-pane" id="devlab" hidden></section>
+        <section class="space-pane android-pane" id="android" hidden></section>
+        <section class="space-pane studio" id="studio" hidden></section>
+        <section class="space-pane design-pane" id="design" hidden></section>
+        <section class="space-pane sec-pane" id="security" hidden></section>
+        <aside class="inspector" id="inspector" hidden></aside>
+      </div>
+    </main>
+  </div>
+
+  <div class="popover glass" id="popover" hidden></div>
+  <div class="sheet-backdrop" id="sheetBackdrop" hidden><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <div class="dropzone" id="dropzone" hidden><div>Dépose le dossier du projet</div></div>
+
+  <script src="audit.js"></script>
+  <script src="assets/pre.js"></script>
+  <script type="module" src="assets/boot.js"></script>
+</body>
+</html>

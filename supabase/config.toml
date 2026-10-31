@@ -1,0 +1,10 @@
+project_id = "dcwfgnwaxsrtuvomttbp"
+
+[functions.admin-users]
+verify_jwt = true
+[functions.org-invite]
+verify_jwt = true
+[functions.security-scan]
+verify_jwt = true
+[functions.site-info]
+verify_jwt = true

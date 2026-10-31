@@ -1,0 +1,26 @@
+{
+  "name": "nexora-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NEXORA — version web SaaS (Responsive Lab, NEX-DESIGN, Studio 3D, sécurité, supervision, équipes, administration) sur Supabase.",
+  "type": "module",
+  "scripts": {
+    "build": "node web/build.mjs",
+    "dev": "node web/build.mjs --dev && npx --yes serve -s web/dist -l 5173",
+    "preview": "npx --yes serve -s web/dist -l 5173",
+    "db:push": "supabase db push",
+    "functions:deploy": "supabase functions deploy --use-api"
+  },
+  "devDependencies": {
+    "@supabase/supabase-js": "2.118.0",
+    "esbuild": "^0.28.2",
+    "fabric": "7.4.0",
+    "mediabunny": "^1.61.3",
+    "opentype.js": "^1.3.4",
+    "paper": "0.12.18",
+    "pdf-lib": "^1.17.1",
+    "prettier": "^3.9.10",
+    "qrcode-generator": "^1.4.4",
+    "three": "^0.185.0"
+  }
+}
